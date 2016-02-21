@@ -375,8 +375,14 @@
 
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
-<link href="#rfc.section.2" rel="Chapter" title="2 Security Considerations"/>
-<link href="#rfc.section.3" rel="Chapter" title="3 Example Policy"/>
+<link href="#rfc.section.2" rel="Chapter" title="2 Basic syntax"/>
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 Basic objects"/>
+<link href="#rfc.section.2.1.1" rel="Chapter" title="2.1.1 AUT-NUM objects"/>
+<link href="#rfc.section.2.1.2" rel="Chapter" title="2.1.2 as-set objects"/>
+<link href="#rfc.section.2.1.3" rel="Chapter" title="2.1.3 Route objects"/>
+<link href="#rfc.section.2.1.4" rel="Chapter" title="2.1.4 IXP objects"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations"/>
+<link href="#rfc.appendix.A" rel="Chapter" title="A Example Policy"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -442,10 +448,74 @@
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Introduction</h1>
 <p id="rfc.section.1.p.1">This is the introductory section.</p>
-<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Security Considerations</h1>
-<p id="rfc.section.2.p.1">This memo raises no security issues;</p>
-<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> Example Policy</h1>
-<p id="rfc.section.3.p.1">This section contains an example policy for an Internet Service Provider.  This should serve as the basis for an operator to start drafting their own set of rules.</p>
+<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Basic syntax</h1>
+<p id="rfc.section.2.p.1">This section describes the basic syntax of the language.</p>
+<h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> Basic objects</h1>
+<p id="rfc.section.2.1.p.1">This section contains information about the objects involved in defining a policy</p>
+<h1 id="rfc.section.2.1.1"><a href="#rfc.section.2.1.1">2.1.1.</a> AUT-NUM objects</h1>
+<p id="rfc.section.2.1.1.p.1">This section contains information about the aut-num objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.2.1.2"><a href="#rfc.section.2.1.2">2.1.2.</a> as-set objects</h1>
+<p id="rfc.section.2.1.2.p.1">This section contains information about the as-set objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.2.1.3"><a href="#rfc.section.2.1.3">2.1.3.</a> Route objects</h1>
+<p id="rfc.section.2.1.3.p.1">This section contains information about the route objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.2.1.4"><a href="#rfc.section.2.1.4">2.1.4.</a> IXP objects</h1>
+<p id="rfc.section.2.1.4.p.1">This section contains information about the IXP objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> Security Considerations</h1>
+<p id="rfc.section.3.p.1">This memo raises no security issues;</p>
+<h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> Example Policy</h1>
+<p id="rfc.section.A.p.1">This section contains an example policy for an Internet Service Provider.  This should serve as the basis for an operator to start drafting their own set of rules.</p>
+<pre>
+aut-num: AS1
+remarks: ------
+peer: AS2
+community: in {add, remove, set} AS1:3240
+Filter: out AS1 0-24 
+Filter: in 4 Any [192.168.0.0]0-24 {} 
+Policy: in * ANY {%AS3333$%}
+Policy: prepend 3
+Community: null-routing {}
+Policy: out 4 med 1000 @10.20.30.40
+Policy: out 6 med 900 @2001:db8:999::fff
+Policy: in 6 localpref 200 [AS1:3240]
+Policy: in 4 prepend 3 
+peer: AS3
+Filter: {in, out} Any 0-48
+Filter: out -AS28929 0-128 {} 6
+
+# Example Internet Exchange
+
+IXP: AMS-IX
+Member: AS1
+Route-Server: Yes
+filter: 
+policy:
+
+aut-num: AS1
+remarks: ------
+
+peer: AS2
+community: in {add, remove, set} AS1:3240
+
+filters: out AS1 0-24 {} 4
+filters: in Any [192.168.0.0]0-24 {} 4 
+
+policy: prepend 3
+Community: null-routing {}
+	
+policy: out med 1000 {10.20.30.40}4
+policy: out med 900 {2001:db8:999::fff} 6
+policy:	in localpref 200 {} 6 [AS1:3240]
+policy: in prepend 3 {} 4
+
+peer: AS3
+filter: {in, out} Any 0-48
+filter: out -AS28929 0-128 {} 6
+	
+	
+IXP: AMS-IX
+filter:
+policy:
+				</pre>
 <h1 id="rfc.authors">
   <a href="#rfc.authors">Authors' Addresses</a>
 </h1>
@@ -498,8 +568,14 @@
   <ul class="toc">
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
-<li>2.   <a href="#rfc.section.2">Security Considerations</a></li>
-<li>3.   <a href="#rfc.section.3">Example Policy</a></li>
+<li>2.   <a href="#rfc.section.2">Basic syntax</a></li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">Basic objects</a></li>
+<ul><li>2.1.1.   <a href="#rfc.section.2.1.1">AUT-NUM objects</a></li>
+<li>2.1.2.   <a href="#rfc.section.2.1.2">as-set objects</a></li>
+<li>2.1.3.   <a href="#rfc.section.2.1.3">Route objects</a></li>
+<li>2.1.4.   <a href="#rfc.section.2.1.4">IXP objects</a></li>
+</ul></ul><li>3.   <a href="#rfc.section.3">Security Considerations</a></li>
+<li>Appendix A.   <a href="#rfc.appendix.A">Example Policy</a></li>
 <li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
