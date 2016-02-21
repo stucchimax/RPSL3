@@ -376,14 +376,14 @@
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
 <link href="#rfc.section.2" rel="Chapter" title="2 Basic objects"/>
-<link href="#rfc.section.2.1" rel="Chapter" title="2.1 AUT-NUM objects"/>
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 aut-num objects"/>
 <link href="#rfc.section.2.2" rel="Chapter" title="2.2 as-set objects"/>
-<link href="#rfc.section.2.3" rel="Chapter" title="2.3 Route objects"/>
+<link href="#rfc.section.2.3" rel="Chapter" title="2.3 route objects"/>
 <link href="#rfc.section.2.4" rel="Chapter" title="2.4 IXP objects"/>
 <link href="#rfc.section.2.4.1" rel="Chapter" title="2.4.1 Defining IXP members"/>
 <link href="#rfc.section.2.4.2" rel="Chapter" title="2.4.2 Members using the route server"/>
 <link href="#rfc.section.3" rel="Chapter" title="3 Basic syntax"/>
-<link href="#rfc.section.3.1" rel="Chapter" title="3.1 keywords"/>
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Keywords"/>
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 Using brackets"/>
 <link href="#rfc.section.3.3" rel="Chapter" title="3.3 Defining a peer"/>
 <link href="#rfc.section.4" rel="Chapter" title="4 Defining a peer's routing policy"/>
@@ -394,6 +394,7 @@
 <link href="#rfc.section.4.3" rel="Chapter" title="4.3 Local Preference"/>
 <link href="#rfc.section.4.4" rel="Chapter" title="4.4 Prepending"/>
 <link href="#rfc.section.4.5" rel="Chapter" title="4.5 MED"/>
+<link href="#rfc.section.4.6" rel="Chapter" title="4.6 Communities"/>
 <link href="#rfc.section.5" rel="Chapter" title="5 Security Considerations"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 RPKI"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 Generating RPSL from router configuration"/>
@@ -470,14 +471,14 @@
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
 <li>2.   <a href="#rfc.section.2">Basic objects</a></li>
-<ul><li>2.1.   <a href="#rfc.section.2.1">AUT-NUM objects</a></li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">aut-num objects</a></li>
 <li>2.2.   <a href="#rfc.section.2.2">as-set objects</a></li>
-<li>2.3.   <a href="#rfc.section.2.3">Route objects</a></li>
+<li>2.3.   <a href="#rfc.section.2.3">route objects</a></li>
 <li>2.4.   <a href="#rfc.section.2.4">IXP objects</a></li>
 <ul><li>2.4.1.   <a href="#rfc.section.2.4.1">Defining IXP members</a></li>
 <li>2.4.2.   <a href="#rfc.section.2.4.2">Members using the route server</a></li>
 </ul></ul><li>3.   <a href="#rfc.section.3">Basic syntax</a></li>
-<ul><li>3.1.   <a href="#rfc.section.3.1">keywords</a></li>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Keywords</a></li>
 <li>3.2.   <a href="#rfc.section.3.2">Using brackets</a></li>
 <li>3.3.   <a href="#rfc.section.3.3">Defining a peer</a></li>
 </ul><li>4.   <a href="#rfc.section.4">Defining a peer's routing policy</a></li>
@@ -488,6 +489,7 @@
 </ul><li>4.3.   <a href="#rfc.section.4.3">Local Preference</a></li>
 <li>4.4.   <a href="#rfc.section.4.4">Prepending</a></li>
 <li>4.5.   <a href="#rfc.section.4.5">MED</a></li>
+<li>4.6.   <a href="#rfc.section.4.6">Communities</a></li>
 </ul><li>5.   <a href="#rfc.section.5">Security Considerations</a></li>
 <li>6.   <a href="#rfc.section.6">RPKI</a></li>
 <li>7.   <a href="#rfc.section.7">Generating RPSL from router configuration</a></li>
@@ -502,11 +504,11 @@
 <p id="rfc.section.1.p.1">This is the introductory section.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Basic objects</h1>
 <p id="rfc.section.2.p.1">This section contains information about the objects involved in defining a policy</p>
-<h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> AUT-NUM objects</h1>
+<h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> aut-num objects</h1>
 <p id="rfc.section.2.1.p.1">This section contains information about the aut-num objects, and their relationship with RPSL3</p>
 <h1 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2.</a> as-set objects</h1>
 <p id="rfc.section.2.2.p.1">This section contains information about the as-set objects, and their relationship with RPSL3</p>
-<h1 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3.</a> Route objects</h1>
+<h1 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3.</a> route objects</h1>
 <p id="rfc.section.2.3.p.1">This section contains information about the route objects, and their relationship with RPSL3</p>
 <h1 id="rfc.section.2.4"><a href="#rfc.section.2.4">2.4.</a> IXP objects</h1>
 <p id="rfc.section.2.4.p.1">This section contains information about the IXP objects, and their relationship with RPSL3</p>
@@ -516,7 +518,7 @@
 <p id="rfc.section.2.4.2.p.1">The route-server attribute in the object</p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> Basic syntax</h1>
 <p id="rfc.section.3.p.1">This section describes the basic syntax of the language.</p>
-<h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> keywords</h1>
+<h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> Keywords</h1>
 <p id="rfc.section.3.1.p.1">Keywords used in the language</p>
 <h1 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2.</a> Using brackets</h1>
 <p id="rfc.section.3.2.p.1">Brackets used in the language</p>
@@ -538,6 +540,8 @@
 <p id="rfc.section.4.4.p.1">Prepending</p>
 <h1 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5.</a> MED</h1>
 <p id="rfc.section.4.5.p.1">Multiple Exit Discriminator</p>
+<h1 id="rfc.section.4.6"><a href="#rfc.section.4.6">4.6.</a> Communities</h1>
+<p id="rfc.section.4.6.p.1">Communities in action</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> Security Considerations</h1>
 <p id="rfc.section.5.p.1">This memo raises no security issues;</p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> RPKI</h1>
@@ -569,8 +573,8 @@ filter: out -AS28929 0-128 {} 6
 # Example Internet Exchange
 
 IXP: AMS-IX
-Member: AS1
-Route-Server: Yes
+member: AS1
+route-Server: Yes
 filter: 
 policy:
 
@@ -584,7 +588,7 @@ filters: out AS1 0-24 {} 4
 filters: in Any [192.168.0.0]0-24 {} 4 
 
 policy: prepend 3
-Community: null-routing {}
+community: null-routing {}
 	
 policy: out med 1000 {10.20.30.40}4
 policy: out med 900 {2001:db8:999::fff} 6

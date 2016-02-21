@@ -65,14 +65,14 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Basic objects . . . . . . . . . . . . . . . . . . . . . . . .   2
-     2.1.  AUT-NUM objects . . . . . . . . . . . . . . . . . . . . .   2
+     2.1.  aut-num objects . . . . . . . . . . . . . . . . . . . . .   2
      2.2.  as-set objects  . . . . . . . . . . . . . . . . . . . . .   3
-     2.3.  Route objects . . . . . . . . . . . . . . . . . . . . . .   3
+     2.3.  route objects . . . . . . . . . . . . . . . . . . . . . .   3
      2.4.  IXP objects . . . . . . . . . . . . . . . . . . . . . . .   3
        2.4.1.  Defining IXP members  . . . . . . . . . . . . . . . .   3
        2.4.2.  Members using the route server  . . . . . . . . . . .   3
    3.  Basic syntax  . . . . . . . . . . . . . . . . . . . . . . . .   3
-     3.1.  keywords  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     3.1.  Keywords  . . . . . . . . . . . . . . . . . . . . . . . .   3
      3.2.  Using brackets  . . . . . . . . . . . . . . . . . . . . .   3
      3.3.  Defining a peer . . . . . . . . . . . . . . . . . . . . .   3
    4.  Defining a peer's routing policy  . . . . . . . . . . . . . .   3
@@ -83,11 +83,12 @@ Table of Contents
      4.3.  Local Preference  . . . . . . . . . . . . . . . . . . . .   4
      4.4.  Prepending  . . . . . . . . . . . . . . . . . . . . . . .   4
      4.5.  MED . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.6.  Communities . . . . . . . . . . . . . . . . . . . . . . .   4
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    6.  RPKI  . . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
    7.  Generating RPSL from router configuration . . . . . . . . . .   4
    8.  Generating router configuration from RPSL . . . . . . . . . .   4
-   Appendix A.  Example Policy . . . . . . . . . . . . . . . . . . .   4
+   Appendix A.  Example Policy . . . . . . . . . . . . . . . . . . .   5
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -99,11 +100,10 @@ Table of Contents
    This section contains information about the objects involved in
    defining a policy
 
-2.1.  AUT-NUM objects
+2.1.  aut-num objects
 
    This section contains information about the aut-num objects, and
    their relationship with RPSL3
-
 
 
 
@@ -119,7 +119,7 @@ Internet-Draft        The third generation of RPSL         February 2016
    This section contains information about the as-set objects, and their
    relationship with RPSL3
 
-2.3.  Route objects
+2.3.  route objects
 
    This section contains information about the route objects, and their
    relationship with RPSL3
@@ -141,7 +141,7 @@ Internet-Draft        The third generation of RPSL         February 2016
 
    This section describes the basic syntax of the language.
 
-3.1.  keywords
+3.1.  Keywords
 
    Keywords used in the language
 
@@ -194,6 +194,10 @@ Internet-Draft        The third generation of RPSL         February 2016
 
    Multiple Exit Discriminator
 
+4.6.  Communities
+
+   Communities in action
+
 5.  Security Considerations
 
    This memo raises no security issues;
@@ -210,14 +214,10 @@ Internet-Draft        The third generation of RPSL         February 2016
 
    How to generate router configs from RPSL
 
-Appendix A.  Example Policy
 
-   This section contains an example policy for an Internet Service
-   Provider.  This should serve as the basis for an operator to start
-   drafting their own set of rules.
 
-   aut-num: AS1
-   remarks: ------
+
+
 
 
 
@@ -226,6 +226,14 @@ Stucchi & Kostantaras    Expires August 24, 2016                [Page 4]
 Internet-Draft        The third generation of RPSL         February 2016
 
 
+Appendix A.  Example Policy
+
+   This section contains an example policy for an Internet Service
+   Provider.  This should serve as the basis for an operator to start
+   drafting their own set of rules.
+
+   aut-num: AS1
+   remarks: ------
    peer: AS2
    community: in {add, remove, set} AS1:3240
    filter: out AS1 0-24
@@ -244,8 +252,8 @@ Internet-Draft        The third generation of RPSL         February 2016
    # Example Internet Exchange
 
    IXP: AMS-IX
-   Member: AS1
-   Route-Server: Yes
+   member: AS1
+   route-Server: Yes
    filter:
    policy:
 
@@ -259,12 +267,20 @@ Internet-Draft        The third generation of RPSL         February 2016
    filters: in Any [192.168.0.0]0-24 {} 4
 
    policy: prepend 3
-   Community: null-routing {}
+   community: null-routing {}
 
    policy: out med 1000 {10.20.30.40}4
    policy: out med 900 {2001:db8:999::fff} 6
    policy: in localpref 200 {} 6 [AS1:3240]
    policy: in prepend 3 {} 4
+
+
+
+
+Stucchi & Kostantaras    Expires August 24, 2016                [Page 5]
+
+Internet-Draft        The third generation of RPSL         February 2016
+
 
    peer: AS3
    filter: {in, out} Any 0-48
@@ -274,13 +290,6 @@ Internet-Draft        The third generation of RPSL         February 2016
    IXP: AMS-IX
    filter:
    policy:
-
-
-
-Stucchi & Kostantaras    Expires August 24, 2016                [Page 5]
-
-Internet-Draft        The third generation of RPSL         February 2016
-
 
 Authors' Addresses
 
@@ -294,15 +303,6 @@ Authors' Addresses
    NLnet Labs
 
    Email: stavros@nlnetlabs.nl
-
-
-
-
-
-
-
-
-
 
 
 

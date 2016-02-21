@@ -35,7 +35,7 @@
 		<section title="Basic objects">
 			<t>This section contains information about the objects involved in defining a policy</t>
 			
-			<section title="AUT-NUM objects">
+			<section title="aut-num objects">
 				<t>This section contains information about the aut-num objects, and their relationship with RPSL3</t>
 			</section>
 			
@@ -43,7 +43,7 @@
 				<t>This section contains information about the as-set objects, and their relationship with RPSL3</t>
 			</section>
 
-			<section title="Route objects">
+			<section title="route objects">
 				<t>This section contains information about the route objects, and their relationship with RPSL3</t>
 			</section>
 
@@ -62,7 +62,7 @@
 		<section title="Basic syntax">
 			<t>This section describes the basic syntax of the language.</t>
 
-			<section title="keywords">
+			<section title="Keywords">
 				<t>Keywords used in the language</t>
 			</section>
 			
@@ -105,6 +105,9 @@
 				<t>Multiple Exit Discriminator</t>
 			</section>
 
+			<section title="Communities">
+				<t>Communities in action</t>
+			</section>
 		</section>
 		<section title="Security Considerations">
 			<t>This memo raises no security issues;</t>
@@ -149,8 +152,8 @@ filter: out -AS28929 0-128 {} 6
 # Example Internet Exchange
 
 IXP: AMS-IX
-Member: AS1
-Route-Server: Yes
+member: AS1
+route-Server: Yes
 filter: 
 policy:
 
@@ -164,7 +167,7 @@ filters: out AS1 0-24 {} 4
 filters: in Any [192.168.0.0]0-24 {} 4 
 
 policy: prepend 3
-Community: null-routing {}
+community: null-routing {}
 	
 policy: out med 1000 {10.20.30.40}4
 policy: out med 900 {2001:db8:999::fff} 6

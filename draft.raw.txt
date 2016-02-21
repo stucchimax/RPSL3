@@ -57,14 +57,14 @@ Table of Contents
 
    1.  Introduction
    2.  Basic objects
-     2.1.  AUT-NUM objects
+     2.1.  aut-num objects
      2.2.  as-set objects
-     2.3.  Route objects
+     2.3.  route objects
      2.4.  IXP objects
        2.4.1.  Defining IXP members
        2.4.2.  Members using the route server
    3.  Basic syntax
-     3.1.  keywords
+     3.1.  Keywords
      3.2.  Using brackets
      3.3.  Defining a peer
    4.  Defining a peer's routing policy
@@ -75,6 +75,7 @@ Table of Contents
      4.3.  Local Preference
      4.4.  Prepending
      4.5.  MED
+     4.6.  Communities
    5.  Security Considerations
    6.  RPKI
    7.  Generating RPSL from router configuration
@@ -91,7 +92,7 @@ Table of Contents
    This section contains information about the objects involved in
    defining a policy
 
-2.1.  AUT-NUM objects
+2.1.  aut-num objects
 
    This section contains information about the aut-num objects, and
    their relationship with RPSL3
@@ -101,7 +102,7 @@ Table of Contents
    This section contains information about the as-set objects, and their
    relationship with RPSL3
 
-2.3.  Route objects
+2.3.  route objects
 
    This section contains information about the route objects, and their
    relationship with RPSL3
@@ -123,7 +124,7 @@ Table of Contents
 
    This section describes the basic syntax of the language.
 
-3.1.  keywords
+3.1.  Keywords
 
    Keywords used in the language
 
@@ -167,6 +168,10 @@ Table of Contents
 
    Multiple Exit Discriminator
 
+4.6.  Communities
+
+   Communities in action
+
 5.  Security Considerations
 
    This memo raises no security issues;
@@ -209,8 +214,8 @@ Appendix A.  Example Policy
    # Example Internet Exchange
 
    IXP: AMS-IX
-   Member: AS1
-   Route-Server: Yes
+   member: AS1
+   route-Server: Yes
    filter:
    policy:
 
@@ -224,7 +229,7 @@ Appendix A.  Example Policy
    filters: in Any [192.168.0.0]0-24 {} 4
 
    policy: prepend 3
-   Community: null-routing {}
+   community: null-routing {}
 
    policy: out med 1000 {10.20.30.40}4
    policy: out med 900 {2001:db8:999::fff} 6
