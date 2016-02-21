@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<!-- generate a ToC -->
 <rfc>
 	<front>
 		<title>
@@ -30,57 +32,119 @@
 			<t>This is the introductory section.</t>
 		</section>
 		
-		<section title="Basic syntax">
-			<t>This section describes the basic syntax of the language.</t>
+		<section title="Basic objects">
+			<t>This section contains information about the objects involved in defining a policy</t>
 			
-			<section title="Basic objects">
-				<t>This section contains information about the objects involved in defining a policy</t>
-				
-				<section title="AUT-NUM objects">
-					<t>This section contains information about the aut-num objects, and their relationship with RPSL3</t>
-				</section>
-				
-				<section title="as-set objects">
-					<t>This section contains information about the as-set objects, and their relationship with RPSL3</t>
-				</section>
+			<section title="AUT-NUM objects">
+				<t>This section contains information about the aut-num objects, and their relationship with RPSL3</t>
+			</section>
+			
+			<section title="as-set objects">
+				<t>This section contains information about the as-set objects, and their relationship with RPSL3</t>
+			</section>
 
-				<section title="Route objects">
-					<t>This section contains information about the route objects, and their relationship with RPSL3</t>
-				</section>
+			<section title="Route objects">
+				<t>This section contains information about the route objects, and their relationship with RPSL3</t>
+			</section>
 
 				<section title="IXP objects">
 					<t>This section contains information about the IXP objects, and their relationship with RPSL3</t>
+
+					<section title="Defining IXP members">
+						<t>Listing members of an internet exchange</t>
+					</section>
+					<section title="Members using the route server">
+						<t>The route-server attribute in the object</t>
+					</section>
 				</section>
-			</section>
 		</section>
 		
+		<section title="Basic syntax">
+			<t>This section describes the basic syntax of the language.</t>
+
+			<section title="keywords">
+				<t>Keywords used in the language</t>
+			</section>
+			
+			<section title="Using brackets">
+				<t>Brackets used in the language</t>
+			</section>
+			
+			<section title="Defining a peer">
+				<t>How a peer is defined, with all its attributes</t>
+			</section>
+
+		</section>
+
+		<section title="Defining a peer's routing policy">
+			<t>A peer and all its attributes</t>
+			
+			<section title="IPv4">
+				<t>IPv4</t>
+				<section title="IPv4 Prefix lists">
+					<t>IPv4 Prefix lists</t>
+				</section>
+			</section>
+
+			<section title="IPv6">
+				<t>IPv6</t>
+				<section title="IPv6 Prefix lists">
+					<t>IPv6 Prefix lists</t>
+				</section>
+			</section>
+
+			<section title="Local Preference">
+				<t>Local preference</t>
+			</section>
+
+			<section title="Prepending">
+				<t>Prepending</t>
+			</section>
+
+			<section title="MED">
+				<t>Multiple Exit Discriminator</t>
+			</section>
+
+		</section>
 		<section title="Security Considerations">
 			<t>This memo raises no security issues;</t>
+		</section>
+
+		<section title="RPKI">
+			<t>Here, we discuss RPKI in relationship with RPSL</t>
+		</section>
+
+		<section title="Generating RPSL from router configuration">
+			<t>How to generate RPSL from routers</t>
+		</section>
+	
+		<section title="Generating router configuration from RPSL">
+			<t>How to generate router configs from RPSL</t>
 		</section>
 
 	</middle>
 
 	<back>
 		<section title="Example Policy">
-			<t>This section contains an example policy for an Internet Service Provider.  This should serve as the basis for an operator to start drafting their own set of rules.</t>
+			<t>This section contains an example policy for an Internet Service Provider. This should serve as the basis for an operator to start drafting their own set of rules.</t>
 			<figure>
 				<artwork>
 aut-num: AS1
 remarks: ------
 peer: AS2
 community: in {add, remove, set} AS1:3240
-Filter: out AS1 0-24 
-Filter: in 4 Any [192.168.0.0]0-24 {} 
-Policy: in * ANY {%AS3333$%}
-Policy: prepend 3
-Community: null-routing {}
-Policy: out 4 med 1000 @10.20.30.40
-Policy: out 6 med 900 @2001:db8:999::fff
-Policy: in 6 localpref 200 [AS1:3240]
-Policy: in 4 prepend 3 
+filter: out AS1 0-24 
+filter: in 4 Any [192.168.0.0]0-24 {} 
+policy: in * ANY {%AS3333$%}
+policy: prepend 3
+community: null-routing {}
+policy: out 4 med 1000 @10.20.30.40
+policy: out 6 med 900 @2001:db8:999::fff
+policy: in 6 localpref 200 [AS1:3240]
+policy: in 4 prepend 3 
 peer: AS3
-Filter: {in, out} Any 0-48
-Filter: out -AS28929 0-128 {} 6
+filter: {in, out} Any 0-48
+filter: out -AS28929 0-128 {} 6
 
 # Example Internet Exchange
 

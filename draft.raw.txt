@@ -2,7 +2,6 @@
 
 
 
-
 Network Working Group                                         M. Stucchi
 Internet-Draft                                                  RIPE NCC
 Expires: August 24, 2016                                  S. Kostantaras
@@ -54,42 +53,135 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+Table of Contents
+
+   1.  Introduction
+   2.  Basic objects
+     2.1.  AUT-NUM objects
+     2.2.  as-set objects
+     2.3.  Route objects
+     2.4.  IXP objects
+       2.4.1.  Defining IXP members
+       2.4.2.  Members using the route server
+   3.  Basic syntax
+     3.1.  keywords
+     3.2.  Using brackets
+     3.3.  Defining a peer
+   4.  Defining a peer's routing policy
+     4.1.  IPv4
+       4.1.1.  IPv4 Prefix lists
+     4.2.  IPv6
+       4.2.1.  IPv6 Prefix lists
+     4.3.  Local Preference
+     4.4.  Prepending
+     4.5.  MED
+   5.  Security Considerations
+   6.  RPKI
+   7.  Generating RPSL from router configuration
+   8.  Generating router configuration from RPSL
+   Appendix A.  Example Policy
+   Authors' Addresses
+
 1.  Introduction
 
    This is the introductory section.
 
-2.  Basic syntax
-
-   This section describes the basic syntax of the language.
-
-2.1.  Basic objects
+2.  Basic objects
 
    This section contains information about the objects involved in
    defining a policy
 
-2.1.1.  AUT-NUM objects
+2.1.  AUT-NUM objects
 
    This section contains information about the aut-num objects, and
    their relationship with RPSL3
 
-2.1.2.  as-set objects
+2.2.  as-set objects
 
    This section contains information about the as-set objects, and their
    relationship with RPSL3
 
-2.1.3.  Route objects
+2.3.  Route objects
 
    This section contains information about the route objects, and their
    relationship with RPSL3
 
-2.1.4.  IXP objects
+2.4.  IXP objects
 
    This section contains information about the IXP objects, and their
    relationship with RPSL3
 
-3.  Security Considerations
+2.4.1.  Defining IXP members
+
+   Listing members of an internet exchange
+
+2.4.2.  Members using the route server
+
+   The route-server attribute in the object
+
+3.  Basic syntax
+
+   This section describes the basic syntax of the language.
+
+3.1.  keywords
+
+   Keywords used in the language
+
+3.2.  Using brackets
+
+   Brackets used in the language
+
+3.3.  Defining a peer
+
+   How a peer is defined, with all its attributes
+
+4.  Defining a peer's routing policy
+
+   A peer and all its attributes
+
+4.1.  IPv4
+
+   IPv4
+
+4.1.1.  IPv4 Prefix lists
+
+   IPv4 Prefix lists
+
+4.2.  IPv6
+
+   IPv6
+
+4.2.1.  IPv6 Prefix lists
+
+   IPv6 Prefix lists
+
+4.3.  Local Preference
+
+   Local preference
+
+4.4.  Prepending
+
+   Prepending
+
+4.5.  MED
+
+   Multiple Exit Discriminator
+
+5.  Security Considerations
 
    This memo raises no security issues;
+
+6.  RPKI
+
+   Here, we discuss RPKI in relationship with RPSL
+
+7.  Generating RPSL from router configuration
+
+   How to generate RPSL from routers
+
+8.  Generating router configuration from RPSL
+
+   How to generate router configs from RPSL
 
 Appendix A.  Example Policy
 
@@ -101,18 +193,18 @@ Appendix A.  Example Policy
    remarks: ------
    peer: AS2
    community: in {add, remove, set} AS1:3240
-   Filter: out AS1 0-24
-   Filter: in 4 Any [192.168.0.0]0-24 {}
-   Policy: in * ANY {%AS3333$%}
-   Policy: prepend 3
-   Community: null-routing {}
-   Policy: out 4 med 1000 @10.20.30.40
-   Policy: out 6 med 900 @2001:db8:999::fff
-   Policy: in 6 localpref 200 [AS1:3240]
-   Policy: in 4 prepend 3
+   filter: out AS1 0-24
+   filter: in 4 Any [192.168.0.0]0-24 {}
+   policy: in * ANY {%AS3333$%}
+   policy: prepend 3
+   community: null-routing {}
+   policy: out 4 med 1000 @10.20.30.40
+   policy: out 6 med 900 @2001:db8:999::fff
+   policy: in 6 localpref 200 [AS1:3240]
+   policy: in 4 prepend 3
    peer: AS3
-   Filter: {in, out} Any 0-48
-   Filter: out -AS28929 0-128 {} 6
+   filter: {in, out} Any 0-48
+   filter: out -AS28929 0-128 {} 6
 
    # Example Internet Exchange
 

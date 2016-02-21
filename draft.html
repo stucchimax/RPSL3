@@ -375,13 +375,29 @@
 
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
-<link href="#rfc.section.2" rel="Chapter" title="2 Basic syntax"/>
-<link href="#rfc.section.2.1" rel="Chapter" title="2.1 Basic objects"/>
-<link href="#rfc.section.2.1.1" rel="Chapter" title="2.1.1 AUT-NUM objects"/>
-<link href="#rfc.section.2.1.2" rel="Chapter" title="2.1.2 as-set objects"/>
-<link href="#rfc.section.2.1.3" rel="Chapter" title="2.1.3 Route objects"/>
-<link href="#rfc.section.2.1.4" rel="Chapter" title="2.1.4 IXP objects"/>
-<link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations"/>
+<link href="#rfc.section.2" rel="Chapter" title="2 Basic objects"/>
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 AUT-NUM objects"/>
+<link href="#rfc.section.2.2" rel="Chapter" title="2.2 as-set objects"/>
+<link href="#rfc.section.2.3" rel="Chapter" title="2.3 Route objects"/>
+<link href="#rfc.section.2.4" rel="Chapter" title="2.4 IXP objects"/>
+<link href="#rfc.section.2.4.1" rel="Chapter" title="2.4.1 Defining IXP members"/>
+<link href="#rfc.section.2.4.2" rel="Chapter" title="2.4.2 Members using the route server"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Basic syntax"/>
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 keywords"/>
+<link href="#rfc.section.3.2" rel="Chapter" title="3.2 Using brackets"/>
+<link href="#rfc.section.3.3" rel="Chapter" title="3.3 Defining a peer"/>
+<link href="#rfc.section.4" rel="Chapter" title="4 Defining a peer's routing policy"/>
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 IPv4"/>
+<link href="#rfc.section.4.1.1" rel="Chapter" title="4.1.1 IPv4 Prefix lists"/>
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 IPv6"/>
+<link href="#rfc.section.4.2.1" rel="Chapter" title="4.2.1 IPv6 Prefix lists"/>
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Local Preference"/>
+<link href="#rfc.section.4.4" rel="Chapter" title="4.4 Prepending"/>
+<link href="#rfc.section.4.5" rel="Chapter" title="4.5 MED"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 Security Considerations"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 RPKI"/>
+<link href="#rfc.section.7" rel="Chapter" title="7 Generating RPSL from router configuration"/>
+<link href="#rfc.section.8" rel="Chapter" title="8 Generating router configuration from RPSL"/>
 <link href="#rfc.appendix.A" rel="Chapter" title="A Example Policy"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
@@ -446,41 +462,109 @@
 </h1>
 <p>Copyright (c) 2016 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
-<h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Introduction</h1>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
+<li>2.   <a href="#rfc.section.2">Basic objects</a></li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">AUT-NUM objects</a></li>
+<li>2.2.   <a href="#rfc.section.2.2">as-set objects</a></li>
+<li>2.3.   <a href="#rfc.section.2.3">Route objects</a></li>
+<li>2.4.   <a href="#rfc.section.2.4">IXP objects</a></li>
+<ul><li>2.4.1.   <a href="#rfc.section.2.4.1">Defining IXP members</a></li>
+<li>2.4.2.   <a href="#rfc.section.2.4.2">Members using the route server</a></li>
+</ul></ul><li>3.   <a href="#rfc.section.3">Basic syntax</a></li>
+<ul><li>3.1.   <a href="#rfc.section.3.1">keywords</a></li>
+<li>3.2.   <a href="#rfc.section.3.2">Using brackets</a></li>
+<li>3.3.   <a href="#rfc.section.3.3">Defining a peer</a></li>
+</ul><li>4.   <a href="#rfc.section.4">Defining a peer's routing policy</a></li>
+<ul><li>4.1.   <a href="#rfc.section.4.1">IPv4</a></li>
+<ul><li>4.1.1.   <a href="#rfc.section.4.1.1">IPv4 Prefix lists</a></li>
+</ul><li>4.2.   <a href="#rfc.section.4.2">IPv6</a></li>
+<ul><li>4.2.1.   <a href="#rfc.section.4.2.1">IPv6 Prefix lists</a></li>
+</ul><li>4.3.   <a href="#rfc.section.4.3">Local Preference</a></li>
+<li>4.4.   <a href="#rfc.section.4.4">Prepending</a></li>
+<li>4.5.   <a href="#rfc.section.4.5">MED</a></li>
+</ul><li>5.   <a href="#rfc.section.5">Security Considerations</a></li>
+<li>6.   <a href="#rfc.section.6">RPKI</a></li>
+<li>7.   <a href="#rfc.section.7">Generating RPSL from router configuration</a></li>
+<li>8.   <a href="#rfc.section.8">Generating router configuration from RPSL</a></li>
+<li>Appendix A.   <a href="#rfc.appendix.A">Example Policy</a></li>
+<li><a href="#rfc.authors">Authors' Addresses</a></li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> Introduction</h1>
 <p id="rfc.section.1.p.1">This is the introductory section.</p>
-<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Basic syntax</h1>
-<p id="rfc.section.2.p.1">This section describes the basic syntax of the language.</p>
-<h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> Basic objects</h1>
-<p id="rfc.section.2.1.p.1">This section contains information about the objects involved in defining a policy</p>
-<h1 id="rfc.section.2.1.1"><a href="#rfc.section.2.1.1">2.1.1.</a> AUT-NUM objects</h1>
-<p id="rfc.section.2.1.1.p.1">This section contains information about the aut-num objects, and their relationship with RPSL3</p>
-<h1 id="rfc.section.2.1.2"><a href="#rfc.section.2.1.2">2.1.2.</a> as-set objects</h1>
-<p id="rfc.section.2.1.2.p.1">This section contains information about the as-set objects, and their relationship with RPSL3</p>
-<h1 id="rfc.section.2.1.3"><a href="#rfc.section.2.1.3">2.1.3.</a> Route objects</h1>
-<p id="rfc.section.2.1.3.p.1">This section contains information about the route objects, and their relationship with RPSL3</p>
-<h1 id="rfc.section.2.1.4"><a href="#rfc.section.2.1.4">2.1.4.</a> IXP objects</h1>
-<p id="rfc.section.2.1.4.p.1">This section contains information about the IXP objects, and their relationship with RPSL3</p>
-<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> Security Considerations</h1>
-<p id="rfc.section.3.p.1">This memo raises no security issues;</p>
+<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> Basic objects</h1>
+<p id="rfc.section.2.p.1">This section contains information about the objects involved in defining a policy</p>
+<h1 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1.</a> AUT-NUM objects</h1>
+<p id="rfc.section.2.1.p.1">This section contains information about the aut-num objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2.</a> as-set objects</h1>
+<p id="rfc.section.2.2.p.1">This section contains information about the as-set objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.2.3"><a href="#rfc.section.2.3">2.3.</a> Route objects</h1>
+<p id="rfc.section.2.3.p.1">This section contains information about the route objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.2.4"><a href="#rfc.section.2.4">2.4.</a> IXP objects</h1>
+<p id="rfc.section.2.4.p.1">This section contains information about the IXP objects, and their relationship with RPSL3</p>
+<h1 id="rfc.section.2.4.1"><a href="#rfc.section.2.4.1">2.4.1.</a> Defining IXP members</h1>
+<p id="rfc.section.2.4.1.p.1">Listing members of an internet exchange</p>
+<h1 id="rfc.section.2.4.2"><a href="#rfc.section.2.4.2">2.4.2.</a> Members using the route server</h1>
+<p id="rfc.section.2.4.2.p.1">The route-server attribute in the object</p>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> Basic syntax</h1>
+<p id="rfc.section.3.p.1">This section describes the basic syntax of the language.</p>
+<h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> keywords</h1>
+<p id="rfc.section.3.1.p.1">Keywords used in the language</p>
+<h1 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2.</a> Using brackets</h1>
+<p id="rfc.section.3.2.p.1">Brackets used in the language</p>
+<h1 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3.</a> Defining a peer</h1>
+<p id="rfc.section.3.3.p.1">How a peer is defined, with all its attributes</p>
+<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> Defining a peer's routing policy</h1>
+<p id="rfc.section.4.p.1">A peer and all its attributes</p>
+<h1 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1.</a> IPv4</h1>
+<p id="rfc.section.4.1.p.1">IPv4</p>
+<h1 id="rfc.section.4.1.1"><a href="#rfc.section.4.1.1">4.1.1.</a> IPv4 Prefix lists</h1>
+<p id="rfc.section.4.1.1.p.1">IPv4 Prefix lists</p>
+<h1 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2.</a> IPv6</h1>
+<p id="rfc.section.4.2.p.1">IPv6</p>
+<h1 id="rfc.section.4.2.1"><a href="#rfc.section.4.2.1">4.2.1.</a> IPv6 Prefix lists</h1>
+<p id="rfc.section.4.2.1.p.1">IPv6 Prefix lists</p>
+<h1 id="rfc.section.4.3"><a href="#rfc.section.4.3">4.3.</a> Local Preference</h1>
+<p id="rfc.section.4.3.p.1">Local preference</p>
+<h1 id="rfc.section.4.4"><a href="#rfc.section.4.4">4.4.</a> Prepending</h1>
+<p id="rfc.section.4.4.p.1">Prepending</p>
+<h1 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5.</a> MED</h1>
+<p id="rfc.section.4.5.p.1">Multiple Exit Discriminator</p>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> Security Considerations</h1>
+<p id="rfc.section.5.p.1">This memo raises no security issues;</p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> RPKI</h1>
+<p id="rfc.section.6.p.1">Here, we discuss RPKI in relationship with RPSL</p>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> Generating RPSL from router configuration</h1>
+<p id="rfc.section.7.p.1">How to generate RPSL from routers</p>
+<h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> Generating router configuration from RPSL</h1>
+<p id="rfc.section.8.p.1">How to generate router configs from RPSL</p>
 <h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> Example Policy</h1>
-<p id="rfc.section.A.p.1">This section contains an example policy for an Internet Service Provider.  This should serve as the basis for an operator to start drafting their own set of rules.</p>
+<p id="rfc.section.A.p.1">This section contains an example policy for an Internet Service Provider. This should serve as the basis for an operator to start drafting their own set of rules.</p>
 <pre>
 aut-num: AS1
 remarks: ------
 peer: AS2
 community: in {add, remove, set} AS1:3240
-Filter: out AS1 0-24 
-Filter: in 4 Any [192.168.0.0]0-24 {} 
-Policy: in * ANY {%AS3333$%}
-Policy: prepend 3
-Community: null-routing {}
-Policy: out 4 med 1000 @10.20.30.40
-Policy: out 6 med 900 @2001:db8:999::fff
-Policy: in 6 localpref 200 [AS1:3240]
-Policy: in 4 prepend 3 
+filter: out AS1 0-24 
+filter: in 4 Any [192.168.0.0]0-24 {} 
+policy: in * ANY {%AS3333$%}
+policy: prepend 3
+community: null-routing {}
+policy: out 4 med 1000 @10.20.30.40
+policy: out 6 med 900 @2001:db8:999::fff
+policy: in 6 localpref 200 [AS1:3240]
+policy: in 4 prepend 3 
 peer: AS3
-Filter: {in, out} Any 0-48
-Filter: out -AS28929 0-128 {} 6
+filter: {in, out} Any 0-48
+filter: out -AS28929 0-128 {} 6
 
 # Example Internet Exchange
 
@@ -562,26 +646,6 @@ policy:
 
   </address>
 </div>
-  
-  <hr class="noprint" />
-  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
-  <ul class="toc">
-
-  	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
-<li>2.   <a href="#rfc.section.2">Basic syntax</a></li>
-<ul><li>2.1.   <a href="#rfc.section.2.1">Basic objects</a></li>
-<ul><li>2.1.1.   <a href="#rfc.section.2.1.1">AUT-NUM objects</a></li>
-<li>2.1.2.   <a href="#rfc.section.2.1.2">as-set objects</a></li>
-<li>2.1.3.   <a href="#rfc.section.2.1.3">Route objects</a></li>
-<li>2.1.4.   <a href="#rfc.section.2.1.4">IXP objects</a></li>
-</ul></ul><li>3.   <a href="#rfc.section.3">Security Considerations</a></li>
-<li>Appendix A.   <a href="#rfc.appendix.A">Example Policy</a></li>
-<li><a href="#rfc.authors">Authors' Addresses</a></li>
-
-
-  </ul>
-
-  
 
 </body>
 </html>
