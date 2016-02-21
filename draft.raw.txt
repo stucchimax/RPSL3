@@ -6,7 +6,7 @@
 Network Working Group                                         M. Stucchi
 Internet-Draft                                                  RIPE NCC
 Expires: August 24, 2016                                  S. Kostantaras
-
+                                                              NLnet Labs
                                                        February 21, 2016
 
 
@@ -62,6 +62,12 @@ Copyright Notice
 
    This memo raises no security issues;
 
+3.  Example Policy
+
+   This section contains an example policy for an Internet Service
+   Provider.  This should serve as the basis for an operator to start
+   drafting their own set of rules.
+
 Authors' Addresses
 
    Massimiliano Stucchi
@@ -71,4 +77,7 @@ Authors' Addresses
 
 
    Stavros Kostantaras
+   NLnet Labs
+
+   Email: stavros@nlnetlabs.nl
 

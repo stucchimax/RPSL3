@@ -12,7 +12,10 @@
 			</address>
 		</author>
 		<author initials="S.K." surname="Kostantaras" fullname="Stavros Kostantaras">
-			<organization></organization>
+			<organization>NLnet Labs</organization>
+			<address>
+				<email>stavros@nlnetlabs.nl</email>
+			</address>
 			</author>
 		
 		<date month="February" year="2016" />
