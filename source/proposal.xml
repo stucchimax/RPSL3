@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+	<!ENTITY RFC2622 PUBLIC '' "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2622.xml">
+	<!ENTITY RFC4012 PUBLIC '' "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4012.xml">
+]>
 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
@@ -40,7 +43,9 @@
 		<date month="February" year="2016" />
 		
 		<abstract>
-			<t>This memo presents some modifications to the Routing Policy Specification Language (RPSL), creating the third generation of the language.  It fixes some issues left from the previous standards, and enhances the language.  Enhancements include the addition of recommendations for using RPSL to describe routing policies in Internet Exchange environments running route servers and other minor corrections.</t>
+			<t>
+				This memo presents some modifications to the Routing Policy Specification Language (RPSL) discussed in <xref target="RFC2622"/> and subsequently updated in <xref target="RFC4012"/>, creating the third generation of the language.  It fixes some issues left from the previous standards, and enhances the language.  Enhancements include the addition of recommendations for using RPSL to describe routing policies in Internet Exchange environments running route servers and other minor corrections.
+			</t>
 		</abstract>
 	</front>
 	
@@ -145,6 +150,12 @@
 	</middle>
 
 	<back>
+		
+		<references title='Normative References'>
+			&RFC2622;
+			&RFC4012;
+		</references>
+		
 		<section title="Example Policy">
 			<t>This section contains an example policy for an Internet Service Provider. This should serve as the basis for an operator to start drafting their own set of rules.</t>
 			<figure>
@@ -202,5 +213,6 @@ policy:
 				</artwork>
 			</figure>
 		</section>
+
 	</back>
 </rfc>

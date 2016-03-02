@@ -4,22 +4,23 @@
 
 Network Working Group                                         M. Stucchi
 Internet-Draft                                                  RIPE NCC
-Expires: August 24, 2016                                  S. Kostantaras
-                                                              NLnet Labs
-                                                       February 21, 2016
+Obsoletes: 2622,4012 (if approved)                        S. Kostantaras
+Intended status: Standards Track                              NLnet Labs
+Expires: August 4, 2016                                    February 2016
 
 
                       The third generation of RPSL
+                         draft-stucchi-rpsl3-00
 
 Abstract
 
    This memo presents some modifications to the Routing Policy
-   Specification Language (RPSL), creating the third generation of the
-   language.  It fixes some issues left from the previous standards, and
-   enhances the language.  Enhancements include the addition of
-   recommendations for using RPSL to describe routing policies in
-   Internet Exchange environments running route servers and other minor
-   corrections.
+   Specification Language (RPSL) discussed in [RFC2622] and subsequently
+   updated in [RFC4012], creating the third generation of the language.
+   It fixes some issues left from the previous standards, and enhances
+   the language.  Enhancements include the addition of recommendations
+   for using RPSL to describe routing policies in Internet Exchange
+   environments running route servers and other minor corrections.
 
 Status of This Memo
 
@@ -36,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 24, 2016.
+   This Internet-Draft will expire on August 4, 2016.
 
 Copyright Notice
 
@@ -80,6 +81,7 @@ Table of Contents
    6.  RPKI
    7.  Generating RPSL from router configuration
    8.  Generating router configuration from RPSL
+   9.  Normative References
    Appendix A.  Example Policy
    Authors' Addresses
 
@@ -187,6 +189,19 @@ Table of Contents
 8.  Generating router configuration from RPSL
 
    How to generate router configs from RPSL
+
+9.  Normative References
+
+   [RFC2622]  Alaettinoglu, C., Villamizar, C., Gerich, E., Kessens, D.,
+              Meyer, D., Bates, T., Karrenberg, D., and M. Terpstra,
+              "Routing Policy Specification Language (RPSL)", RFC 2622,
+              DOI 10.17487/RFC2622, June 1999,
+              <http://www.rfc-editor.org/info/rfc2622>.
+
+   [RFC4012]  Blunk, L., Damas, J., Parent, F., and A. Robachevsky,
+              "Routing Policy Specification Language next generation
+              (RPSLng)", RFC 4012, DOI 10.17487/RFC4012, March 2005,
+              <http://www.rfc-editor.org/info/rfc4012>.
 
 Appendix A.  Example Policy
 

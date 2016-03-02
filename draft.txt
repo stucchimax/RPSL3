@@ -4,22 +4,23 @@
 
 Network Working Group                                         M. Stucchi
 Internet-Draft                                                  RIPE NCC
-Expires: August 24, 2016                                  S. Kostantaras
-                                                              NLnet Labs
-                                                       February 21, 2016
+Obsoletes: 2622,4012 (if approved)                        S. Kostantaras
+Intended status: Standards Track                              NLnet Labs
+Expires: August 4, 2016                                    February 2016
 
 
                       The third generation of RPSL
+                         draft-stucchi-rpsl3-00
 
 Abstract
 
    This memo presents some modifications to the Routing Policy
-   Specification Language (RPSL), creating the third generation of the
-   language.  It fixes some issues left from the previous standards, and
-   enhances the language.  Enhancements include the addition of
-   recommendations for using RPSL to describe routing policies in
-   Internet Exchange environments running route servers and other minor
-   corrections.
+   Specification Language (RPSL) discussed in [RFC2622] and subsequently
+   updated in [RFC4012], creating the third generation of the language.
+   It fixes some issues left from the previous standards, and enhances
+   the language.  Enhancements include the addition of recommendations
+   for using RPSL to describe routing policies in Internet Exchange
+   environments running route servers and other minor corrections.
 
 Status of This Memo
 
@@ -36,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 24, 2016.
+   This Internet-Draft will expire on August 4, 2016.
 
 Copyright Notice
 
@@ -49,15 +50,15 @@ Copyright Notice
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
 
 
 
-Stucchi & Kostantaras    Expires August 24, 2016                [Page 1]
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 1]
 
-Internet-Draft        The third generation of RPSL         February 2016
+Internet-Draft                   RPSLv3                    February 2016
 
 
+   include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -65,7 +66,7 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Basic objects . . . . . . . . . . . . . . . . . . . . . . . .   2
-     2.1.  aut-num objects . . . . . . . . . . . . . . . . . . . . .   2
+     2.1.  aut-num objects . . . . . . . . . . . . . . . . . . . . .   3
      2.2.  as-set objects  . . . . . . . . . . . . . . . . . . . . .   3
      2.3.  route objects . . . . . . . . . . . . . . . . . . . . . .   3
      2.4.  IXP objects . . . . . . . . . . . . . . . . . . . . . . .   3
@@ -75,8 +76,8 @@ Table of Contents
      3.1.  Keywords  . . . . . . . . . . . . . . . . . . . . . . . .   3
      3.2.  Using brackets  . . . . . . . . . . . . . . . . . . . . .   3
      3.3.  Defining a peer . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Defining a peer's routing policy  . . . . . . . . . . . . . .   3
-     4.1.  IPv4  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   4.  Defining a peer's routing policy  . . . . . . . . . . . . . .   4
+     4.1.  IPv4  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
        4.1.1.  IPv4 Prefix lists . . . . . . . . . . . . . . . . . .   4
      4.2.  IPv6  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
        4.2.1.  IPv6 Prefix lists . . . . . . . . . . . . . . . . . .   4
@@ -86,8 +87,9 @@ Table of Contents
      4.6.  Communities . . . . . . . . . . . . . . . . . . . . . . .   4
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
    6.  RPKI  . . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   7.  Generating RPSL from router configuration . . . . . . . . . .   4
-   8.  Generating router configuration from RPSL . . . . . . . . . .   4
+   7.  Generating RPSL from router configuration . . . . . . . . . .   5
+   8.  Generating router configuration from RPSL . . . . . . . . . .   5
+   9.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
    Appendix A.  Example Policy . . . . . . . . . . . . . . . . . . .   5
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
@@ -100,19 +102,22 @@ Table of Contents
    This section contains information about the objects involved in
    defining a policy
 
+
+
+
+
+
+
+
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 2]
+
+Internet-Draft                   RPSLv3                    February 2016
+
+
 2.1.  aut-num objects
 
    This section contains information about the aut-num objects, and
    their relationship with RPSL3
-
-
-
-
-
-Stucchi & Kostantaras    Expires August 24, 2016                [Page 2]
-
-Internet-Draft        The third generation of RPSL         February 2016
-
 
 2.2.  as-set objects
 
@@ -153,6 +158,18 @@ Internet-Draft        The third generation of RPSL         February 2016
 
    How a peer is defined, with all its attributes
 
+
+
+
+
+
+
+
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 3]
+
+Internet-Draft                   RPSLv3                    February 2016
+
+
 4.  Defining a peer's routing policy
 
    A peer and all its attributes
@@ -160,15 +177,6 @@ Internet-Draft        The third generation of RPSL         February 2016
 4.1.  IPv4
 
    IPv4
-
-
-
-
-
-Stucchi & Kostantaras    Expires August 24, 2016                [Page 3]
-
-Internet-Draft        The third generation of RPSL         February 2016
-
 
 4.1.1.  IPv4 Prefix lists
 
@@ -206,6 +214,18 @@ Internet-Draft        The third generation of RPSL         February 2016
 
    Here, we discuss RPKI in relationship with RPSL
 
+
+
+
+
+
+
+
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 4]
+
+Internet-Draft                   RPSLv3                    February 2016
+
+
 7.  Generating RPSL from router configuration
 
    How to generate RPSL from routers
@@ -214,17 +234,18 @@ Internet-Draft        The third generation of RPSL         February 2016
 
    How to generate router configs from RPSL
 
+9.  Normative References
 
+   [RFC2622]  Alaettinoglu, C., Villamizar, C., Gerich, E., Kessens, D.,
+              Meyer, D., Bates, T., Karrenberg, D., and M. Terpstra,
+              "Routing Policy Specification Language (RPSL)", RFC 2622,
+              DOI 10.17487/RFC2622, June 1999,
+              <http://www.rfc-editor.org/info/rfc2622>.
 
-
-
-
-
-
-Stucchi & Kostantaras    Expires August 24, 2016                [Page 4]
-
-Internet-Draft        The third generation of RPSL         February 2016
-
+   [RFC4012]  Blunk, L., Damas, J., Parent, F., and A. Robachevsky,
+              "Routing Policy Specification Language next generation
+              (RPSLng)", RFC 4012, DOI 10.17487/RFC4012, March 2005,
+              <http://www.rfc-editor.org/info/rfc4012>.
 
 Appendix A.  Example Policy
 
@@ -253,6 +274,14 @@ Appendix A.  Example Policy
 
    IXP: AMS-IX
    member: AS1
+
+
+
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 5]
+
+Internet-Draft                   RPSLv3                    February 2016
+
+
    route-Server: Yes
    filter:
    policy:
@@ -273,14 +302,6 @@ Appendix A.  Example Policy
    policy: out med 900 {2001:db8:999::fff} 6
    policy: in localpref 200 {} 6 [AS1:3240]
    policy: in prepend 3 {} 4
-
-
-
-
-Stucchi & Kostantaras    Expires August 24, 2016                [Page 5]
-
-Internet-Draft        The third generation of RPSL         February 2016
-
 
    peer: AS3
    filter: {in, out} Any 0-48
@@ -312,25 +333,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Stucchi & Kostantaras    Expires August 24, 2016                [Page 6]
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 6]

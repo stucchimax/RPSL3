@@ -399,6 +399,7 @@
 <link href="#rfc.section.6" rel="Chapter" title="6 RPKI"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 Generating RPSL from router configuration"/>
 <link href="#rfc.section.8" rel="Chapter" title="8 Generating router configuration from RPSL"/>
+<link href="#rfc.references" rel="Chapter" title="9 Normative References"/>
 <link href="#rfc.appendix.A" rel="Chapter" title="A Example Policy"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
@@ -407,10 +408,10 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Stucchi, M. and S. Kostantaras" />
-  <meta name="dct.identifier" content="urn:ietf:id:" />
-  <meta name="dct.issued" scheme="ISO8601" content="2016-2-21" />
-  <meta name="dct.abstract" content="This memo presents some modifications to the Routing Policy Specification Language (RPSL), creating the third generation of the language.  It fixes some issues left from the previous standards, and enhances the language.  Enhancements include the addition of recommendations for using RPSL to describe routing policies in Internet Exchange environments running route servers and other minor corrections." />
-  <meta name="description" content="This memo presents some modifications to the Routing Policy Specification Language (RPSL), creating the third generation of the language.  It fixes some issues left from the previous standards, and enhances the language.  Enhancements include the addition of recommendations for using RPSL to describe routing policies in Internet Exchange environments running route servers and other minor corrections." />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-stucchi-rpsl3-00" />
+  <meta name="dct.issued" scheme="ISO8601" content="2016-2" />
+  <meta name="dct.abstract" content="This memo presents some modifications to the Routing Policy Specification Language (RPSL) discussed in " />
+  <meta name="description" content="This memo presents some modifications to the Routing Policy Specification Language (RPSL) discussed in " />
 
 </head>
 
@@ -428,16 +429,16 @@
   <td class="right">RIPE NCC</td>
 </tr>
 <tr>
-  <td class="left">Expires: August 24, 2016</td>
+  <td class="left">Obsoletes: 2622,4012 (if approved)</td>
   <td class="right">S. Kostantaras</td>
 </tr>
 <tr>
-  <td class="left"></td>
+  <td class="left">Intended status: Standards Track</td>
   <td class="right">NLnet Labs</td>
 </tr>
 <tr>
-  <td class="left"></td>
-  <td class="right">February 21, 2016</td>
+  <td class="left">Expires: August 4, 2016</td>
+  <td class="right">February 2016</td>
 </tr>
 
     	
@@ -445,19 +446,19 @@
   </table>
 
   <p class="title">The third generation of RPSL <br />
-  <span class="filename"></span></p>
+  <span class="filename">draft-stucchi-rpsl3-00</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
 </h1>
-<p>This memo presents some modifications to the Routing Policy Specification Language (RPSL), creating the third generation of the language.  It fixes some issues left from the previous standards, and enhances the language.  Enhancements include the addition of recommendations for using RPSL to describe routing policies in Internet Exchange environments running route servers and other minor corrections.</p>
+<p>This memo presents some modifications to the Routing Policy Specification Language (RPSL) discussed in <a href="#RFC2622">[RFC2622]</a> and subsequently updated in <a href="#RFC4012">[RFC4012]</a>, creating the third generation of the language.  It fixes some issues left from the previous standards, and enhances the language.  Enhancements include the addition of recommendations for using RPSL to describe routing policies in Internet Exchange environments running route servers and other minor corrections.  </p>
 <h1 id="rfc.status">
   <a href="#rfc.status">Status of This Memo</a>
 </h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 24, 2016.</p>
+<p>This Internet-Draft will expire on August 4, 2016.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -494,6 +495,7 @@
 <li>6.   <a href="#rfc.section.6">RPKI</a></li>
 <li>7.   <a href="#rfc.section.7">Generating RPSL from router configuration</a></li>
 <li>8.   <a href="#rfc.section.8">Generating router configuration from RPSL</a></li>
+<li>9.   <a href="#rfc.references">Normative References</a></li>
 <li>Appendix A.   <a href="#rfc.appendix.A">Example Policy</a></li>
 <li><a href="#rfc.authors">Authors' Addresses</a></li>
 
@@ -550,6 +552,23 @@
 <p id="rfc.section.7.p.1">How to generate RPSL from routers</p>
 <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> Generating router configuration from RPSL</h1>
 <p id="rfc.section.8.p.1">How to generate router configs from RPSL</p>
+<h1 id="rfc.references"><a href="#rfc.references">9.</a> Normative References</h1>
+<table>
+  <tbody>
+    <tr>
+      <td class="reference">
+        <b id="RFC2622">[RFC2622]</b>
+      </td>
+      <td class="top"><a>Alaettinoglu, C.</a>, <a>Villamizar, C.</a>, <a>Gerich, E.</a>, <a>Kessens, D.</a>, <a>Meyer, D.</a>, <a>Bates, T.</a>, <a>Karrenberg, D.</a> and <a>M. Terpstra</a>, "<a href="http://tools.ietf.org/html/rfc2622">Routing Policy Specification Language (RPSL)</a>", RFC 2622, DOI 10.17487/RFC2622, June 1999.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC4012">[RFC4012]</b>
+      </td>
+      <td class="top"><a>Blunk, L.</a>, <a>Damas, J.</a>, <a>Parent, F.</a> and <a>A. Robachevsky</a>, "<a href="http://tools.ietf.org/html/rfc4012">Routing Policy Specification Language next generation (RPSLng)</a>", RFC 4012, DOI 10.17487/RFC4012, March 2005.</td>
+    </tr>
+  </tbody>
+</table>
 <h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> Example Policy</h1>
 <p id="rfc.section.A.p.1">This section contains an example policy for an Internet Service Provider. This should serve as the basis for an operator to start drafting their own set of rules.</p>
 <pre>
