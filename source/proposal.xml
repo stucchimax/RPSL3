@@ -21,7 +21,6 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 
-<!-- generate a ToC -->
 <rfc category="std" docName="draft-stucchi-rpsl3-00" ipr="trust200902" obsoletes="2622,4012">
 	<front>
 		<title abbrev="RPSLv3">
