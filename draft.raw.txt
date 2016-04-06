@@ -256,9 +256,6 @@ Appendix A.  Example Policy
    filter: out -AS28929 0-128 {} 6
 
 
-   IXP: AMS-IX
-   filter:
-   policy:
 
 Authors' Addresses
 

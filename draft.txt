@@ -91,7 +91,7 @@ Table of Contents
    8.  Generating router configuration from RPSL . . . . . . . . . .   5
    9.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
    Appendix A.  Example Policy . . . . . . . . . . . . . . . . . . .   5
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
 
@@ -253,6 +253,35 @@ Appendix A.  Example Policy
    Provider.  This should serve as the basis for an operator to start
    drafting their own set of rules.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 5]
+
+Internet-Draft                   RPSLv3                    February 2016
+
+
    aut-num: AS1
    remarks: ------
    peer: AS2
@@ -274,14 +303,6 @@ Appendix A.  Example Policy
 
    IXP: AMS-IX
    member: AS1
-
-
-
-Stucchi & Kostantaras    Expires August 4, 2016                 [Page 5]
-
-Internet-Draft                   RPSLv3                    February 2016
-
-
    route-Server: Yes
    filter:
    policy:
@@ -308,9 +329,14 @@ Internet-Draft                   RPSLv3                    February 2016
    filter: out -AS28929 0-128 {} 6
 
 
-   IXP: AMS-IX
-   filter:
-   policy:
+
+
+
+
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 6]
+
+Internet-Draft                   RPSLv3                    February 2016
+
 
 Authors' Addresses
 
@@ -333,4 +359,34 @@ Authors' Addresses
 
 
 
-Stucchi & Kostantaras    Expires August 4, 2016                 [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Stucchi & Kostantaras    Expires August 4, 2016                 [Page 7]
